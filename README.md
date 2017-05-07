@@ -1,24 +1,53 @@
-# README
+## Database Design
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  ### 1.Users table
+|column|type|option|
+|:----:|:-:|:----:|
+|name |string| index: true, null: false, unique: true|
+|email|string| index: true, unique: true|
 
-Things you may want to cover:
+ #####  Asssociation
 
-* Ruby version
+   - has_many :groups, through: :group_users
+   - has_many :group_users
+   - has_many :messaged_groupes, through: :messages, source: :group
+   - has_many :messages
 
-* System dependencies
 
-* Configuration
+### 2.Groups table
 
-* Database creation
+|column|type|option|
+|:----:|:--:|:----:|
+|name|string|index: true, unique: true, null: false|
 
-* Database initialization
+#####  Asssociation
 
-* How to run the test suite
+   - has_many :users, through: :group_users
+   - has_many :group_users
+   - has_many :messaged_users, through: :messages, source: :user
+   - has_many :messages
 
-* Services (job queues, cache servers, search engines, etc.)
+### 3.Group_users table
 
-* Deployment instructions
+|column|type|option|
+|:----:|:--:|:----:|
+|user_id|references|foreign_key: true |
+|group_id|references|foreign_key: true|
 
-* ...
+#####  Asssociation
+
+   - belongs_to :user
+   - belongs_to :group
+
+### 4.Massages table
+|column|type|option|
+|:----:|:--:|:----:|
+|body|text|null: false|
+|image|string|  |
+|user_id|references|foreign_key: true |
+|group_id|references|foreign_key: true|
+
+#####  Asssociation
+
+   - belongs_to :user
+   - belongs_to :group
