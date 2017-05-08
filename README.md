@@ -6,11 +6,11 @@
 |name |string| index: true, null: false, unique: true|
 |email|string| index: true, unique: true|
 
- #####  Asssociation
+ #####  Association
 
    - has_many :groups, through: :group_users
    - has_many :group_users
-   - has_many :messaged_groupes, through: :messages, source: :group
+   - has_many :messaged_groups, through: :messages, source: :group
    - has_many :messages
 
 
@@ -20,7 +20,7 @@
 |:----:|:--:|:----:|
 |name|string|index: true, unique: true, null: false|
 
-#####  Asssociation
+#####  Association
 
    - has_many :users, through: :group_users
    - has_many :group_users
@@ -34,7 +34,7 @@
 |user_id|references|foreign_key: true |
 |group_id|references|foreign_key: true|
 
-#####  Asssociation
+#####  Association
 
    - belongs_to :user
    - belongs_to :group
@@ -47,7 +47,7 @@
 |user_id|references|foreign_key: true |
 |group_id|references|foreign_key: true|
 
-#####  Asssociation
+#####  Association
 
    - belongs_to :user
    - belongs_to :group
