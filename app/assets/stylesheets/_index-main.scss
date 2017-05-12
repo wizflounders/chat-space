@@ -1,0 +1,109 @@
+// アラート
+
+.notification {
+    background-color: $blue;
+    text-align: center;
+    color: $white;
+}
+// チャットメイン画面
+
+.chat-main {
+  @include float-left;
+  width: calc( 100vw - 300px );
+  height: 100vh;
+
+  .chat-header {
+    box-sizing: border-box;
+    height: 15%;
+    padding: 0 40px;
+    border: 1px solid #eee;
+
+    .chat-header__group {
+        @include clearfix;
+
+      &__name {
+        @include float-left;
+        margin: 35px 0 15px 0;
+        font-size: 20px;
+        color: $message-font-color;
+      }
+      &--edit-btn {
+      @include float-right;
+      box-sizing: border-box;
+      color: $blue;
+      margin-top: 28px;
+      padding: 8px 20px;
+      border: 1px solid $blue;
+      height: 40px;
+      }
+    }
+    .chat-header__group-member {
+        font-size: 12px;
+        color: $light-gray;
+    }
+  }
+  .chat-body {
+    box-sizing: border-box;
+    height: calc( 100vh - 15% - 90px );
+    padding-top: 46px;
+    overflow-y: scroll;
+    color: $message-font-color;
+
+    &__message-box {
+      @include clearfix;
+      margin-bottom: 40px;
+      padding-left: 40px;
+
+      &__name {
+        @include float-left;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__date {
+        @include float-left;
+        padding: 0 0 10px 10px;
+        color: $light-gray;
+        font-size: 12px;
+      }
+      &__body {
+        clear: both;
+        font-size: 14px;
+      }
+    }
+  }
+// メッセージ送信フォーム
+
+  .chat-footer {
+    box-sizing: border-box;
+    background-color: #B8C3C7;
+    height: 90px;
+    width: 100%;
+    padding: 20px 40px;
+
+    form.chat-footer__form {
+      @include float-left;
+      box-sizing: border-box;
+      width: calc( 100% - 130px );
+      height: 50px;
+      padding: 15px 0 15px 10px;
+      background-color: $white;
+      color: $light-gray;
+
+      .fa.fa-image {
+        @include float-right;
+        padding-right: 10px;
+        color: $message-font-color;
+      }
+    }
+    input.chat-footer--submit {
+      @include float-left;
+      height: 50px;
+      width: 100px;
+      margin-left: 15px;
+      background-color: $blue;
+      border: 0;
+      text-align: center;
+      color: $white;
+    }
+  }
+}

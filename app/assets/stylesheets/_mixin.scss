@@ -1,0 +1,17 @@
+// mixin
+
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+@mixin float-left {
+  float: left;
+}
+
+@mixin float-right {
+  float: right;
+}

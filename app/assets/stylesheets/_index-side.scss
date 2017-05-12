@@ -1,0 +1,49 @@
+// チャット画面サイドバー
+
+.chat-side {
+    @include float-left;
+    background-color: #2f3e51;
+    width: 300px;
+    height: 100vh;
+    color: $white;
+
+  .user {
+    height: 15%;
+    background-color: #090c10;
+    padding: 0 20px;
+
+      &__user-content {
+
+        &__user-name {
+          display: inline-block;
+          line-height: 110px;
+          font-weight: bold;
+
+        }
+        a.user__user-content--user-new {
+          margin-left: 70px;
+          text-decoration: none;
+          color: $white;
+          }
+        a.user__user-content--user-edit {
+          color: $white;
+        }
+      }
+  }
+
+  .groups-list {
+      height: calc( 100vh - 15% );
+      padding: 0 20px;
+      .group-box{
+
+       &__group-name {
+        padding: 20px 0 5px 0;
+        text-decoration: none;
+       }
+       &__group-message {
+         padding-bottom: 40px;
+         font-size: 11px;
+       }
+  }
+  }
+}
