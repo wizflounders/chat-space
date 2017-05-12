@@ -1,0 +1,73 @@
+.notification
+ チャットグループが作成されました
+.chat-side
+ .user
+  .user__user-content
+   .user__user-content__user-name
+    Member1
+   %a.user__user-content--user-new
+    %i.fa.fa-pencil-square-o
+   %a.user__user-content--user-edit
+    %i.fa.fa-cog
+ .groups-list
+  .group-box
+   .group-box__group-name
+    group1
+   .group-box__group-message
+    message
+  .group-box
+  .group-box__group-name
+   group2
+  .group-box__group-message
+   message2
+  .group-box
+  .group-box__group-name
+   group3
+  .group-box__group-message
+   まだメーセージはありません
+  .group-box
+  .group-box__group-name
+   group4
+  .group-box__group-message
+   まだメッセージはありません
+
+.chat-main
+ .chat-header
+  .chat-header__group.clearfix
+   .chat-header__group__name
+    GroupName
+   %a.chat-header__group--edit-btn
+    edit
+  .chat-header__group-member
+   MEMBER: Mika
+
+ .chat-body
+  .chat-body__message-box.clearfix
+   .chat-body__message-box__name
+    member1
+   .chat-body__message-box__date
+    2017/7/26 12:00:00
+   .chat-body__message-box__body
+    Hello world!
+
+  .chat-body__message-box.clearfix
+   .chat-body__message-box__name
+    member2
+   .chat-body__message-box__date
+    2017/7/26 12:01:01
+   .chat-body__message-box__body
+    こんにちは！
+
+  .chat-body__message-box.clearfix
+   .chat-body__message-box__name
+    member3
+   .chat-body__message-box__date
+    2017/7/26 12:00:00
+   .chat-body__message-box__body
+    Hi there!
+
+ .chat-footer
+  %form.chat-footer__form
+   Type a message
+   %i.fa.fa-image
+  %input.chat-footer--submit{type: "submit", value: "Send"}
