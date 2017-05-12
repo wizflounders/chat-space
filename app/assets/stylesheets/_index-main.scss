@@ -12,7 +12,6 @@
   width: calc( 100vw - 300px );
   height: 100vh;
 
-
   .chat-header {
     box-sizing: border-box;
     height: 15%;
@@ -47,8 +46,8 @@
     box-sizing: border-box;
     height: calc( 100vh - 15% - 90px );
     padding-top: 46px;
+    overflow-y: scroll;
     color: $message-font-color;
-
 
     &__message-box {
       @include clearfix;
@@ -96,7 +95,6 @@
         color: $message-font-color;
       }
     }
-
     input.chat-footer--submit {
       @include float-left;
       height: 50px;
