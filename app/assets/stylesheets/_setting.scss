@@ -8,6 +8,15 @@
     }
 }
 
+@mixin float-left {
+  float: left;
+}
+
+@mixin float-right {
+  float: right;
+}
+
+
 
 $white:#ffffff;
 $message-font-color:#333333;
