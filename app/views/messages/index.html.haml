@@ -1,13 +1,17 @@
+-# アラート
+
 .notification
  チャットグループが作成されました
+
+ -# チャット画面サイドバー
 .chat-side
  .user
   .user__user-content
    .user__user-content__user-name
     Member1
-   %a.user__user-content--user-new
+   %a.user__user-content--user-new{"href":"#"}
     %i.fa.fa-pencil-square-o
-   %a.user__user-content--user-edit
+   %a.user__user-content--user-edit{"href":"#"}
     %i.fa.fa-cog
  .groups-list
   .group-box
@@ -31,9 +35,10 @@
   .group-box__group-message
    まだメッセージはありません
 
+-# チャットメイン画面
 .chat-main
  .chat-header
-  .chat-header__group.clearfix
+  .chat-header__group
    .chat-header__group__name
     GroupName
    %a.chat-header__group--edit-btn
@@ -42,7 +47,7 @@
    MEMBER: Mika
 
  .chat-body
-  .chat-body__message-box.clearfix
+  .chat-body__message-box
    .chat-body__message-box__name
     member1
    .chat-body__message-box__date
@@ -50,7 +55,7 @@
    .chat-body__message-box__body
     Hello world!
 
-  .chat-body__message-box.clearfix
+  .chat-body__message-box
    .chat-body__message-box__name
     member2
    .chat-body__message-box__date
@@ -58,7 +63,7 @@
    .chat-body__message-box__body
     こんにちは！
 
-  .chat-body__message-box.clearfix
+  .chat-body__message-box
    .chat-body__message-box__name
     member3
    .chat-body__message-box__date
@@ -69,5 +74,5 @@
  .chat-footer
   %form.chat-footer__form
    Type a message
-   %i.fa.fa-image
+   %a.icon.fa.fa-image{"href":"#"}
   %input.chat-footer--submit{type: "submit", value: "Send"}
