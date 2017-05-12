@@ -40,7 +40,7 @@
     }
     .chat-header__group-member {
         font-size: 12px;
-        color: $light-grey;
+        color: $light-gray;
     }
   }
   .chat-body {
@@ -63,7 +63,7 @@
       &__date {
         @include float-left;
         padding: 0 0 10px 10px;
-        color: $light-grey;
+        color: $light-gray;
         font-size: 12px;
       }
       &__body {
@@ -88,7 +88,7 @@
       height: 50px;
       padding: 15px 0 15px 10px;
       background-color: $white;
-      color: $light-grey;
+      color: $light-gray;
 
       .fa.fa-image {
         @include float-right;
