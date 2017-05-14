@@ -1,17 +1,12 @@
--# アラート
 
-
-
-
- -# チャット画面サイドバー
 .chat-side
  .user
   .user__user-content
    .user__user-content__user-name
     Member1
-   %a.user__user-content--user-new{"href":"/users/#{current_user.id}/edit"}
+   %a.user__user-content--user-new{"href":"#"}
     %i.fa.fa-pencil-square-o
-   %a.user__user-content--user-edit{"href":"#"}
+   %a.user__user-content--user-edit{"href":"/users/#{current_user.id}/edit"}
     %i.fa.fa-cog
  .groups-list
   .group-box
