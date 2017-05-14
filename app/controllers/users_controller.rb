@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def update
     current_user.update(update_params)
-    redirect_to :root
+    redirect_to :root, notice: "アカウントが更新されました"
   end
 
   private
