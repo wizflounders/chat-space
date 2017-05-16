@@ -1,6 +1,7 @@
 .chat-group-form
   %h1 新規チャットグループ
-  %form#new_chat_group.new_chat_group{"accept-charset" => "UTF-8", :action => "/groups", :method => "post"}
+  #new_chat_group.new_chat_group
+  = form_for @group do |f|
     .chat-group-form__errors
       %h2
         1件のエラーが発生しました。
@@ -8,9 +9,10 @@
           %li エラーです
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
-        %label.chat-group-form__label{:for => "chat_group_name"} グループ名
+        = f.label :Name, class: "chat-group-form__label"
       .chat-group-form__field--right
-        %input#chat_group_name.chat-group-form__input{:name => "chat_group[name]", :placeholder => "グループ名を入力してください", :type => "text"}/
+        = f.text_field :name, placeholder: "グループ名を入力して下さい", class: "chat-group-form__input", id: "chat_group_name"
+
     .chat-group-form__field.clearfix
       / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
       /
@@ -27,7 +29,7 @@
       .chat-group-form__field--left
         %label.chat-group-form__label{:for => "chat_group_チャットメンバー"} チャットメンバー
       .chat-group-form__field--right
-        / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
+    -#     / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
         / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
         /
           <div id='chat-group-users'>
@@ -39,4 +41,4 @@
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
-        %input.chat-group-form__action-btn{"data-disable-with" => "Save", :name => "commit", :type => "submit", :value => "Save"}/
+        = f.submit "Save", class: "chat-group-form__action-btn"
