@@ -7,4 +7,7 @@ class User < ApplicationRecord
 
   validates :name, presence:  {message: "を入力してください"}, uniqueness: {message: "は既に他のユーザが使用しています"}
   validates :email, presence:  {message: "を入力してください"}, uniqueness: {message: "は既に他のユーザが使用しています"}
+
+  has_many :groups, through: :group_users
+  has_many :group_users
 end
