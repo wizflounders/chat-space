@@ -15,11 +15,16 @@ class GroupsController < ApplicationController
     else
       render 'new'
     end
+  end
 
+  def show
+    @groups = current_user.groups
+    @group = Group.find(params[:id])
   end
 
   private
   def create_group_params
     params.require(:group).permit(:name, user_ids: [])
   end
+
 end
