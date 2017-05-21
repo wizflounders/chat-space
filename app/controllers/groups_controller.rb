@@ -22,8 +22,26 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+     @group = Group.find(params[:id])
+     @group.update(update_params)
+     if @group.save
+       redirect_to :root, notice: "グループ情報が更新されました"
+     else
+       render 'edit'
+     end
+  end
+
   private
   def create_group_params
+    params.require(:group).permit(:name, user_ids: [])
+  end
+
+  def update_params
     params.require(:group).permit(:name, user_ids: [])
   end
 
