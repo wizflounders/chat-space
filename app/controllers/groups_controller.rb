@@ -30,7 +30,8 @@ class GroupsController < ApplicationController
      @group = Group.find(params[:id])
      @group.update(update_params)
      if @group.save
-       redirect_to :root, notice: "グループ情報が更新されました"
+       redirect_to({ action: :show }, notice: "グループ情報が更新されました")
+
      else
        render 'edit'
      end
