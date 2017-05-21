@@ -8,8 +8,9 @@
           = @group.errors.count
           件のエラーが発生しました。
           %ul
-          - @group.errors.full_messages.each do |msg|
+          - @group.errors.messages[:name].each do |msg|
             %li
+              グループ名
               = msg
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
