@@ -35,6 +35,13 @@
       padding: 8px 20px;
       border: 1px solid $blue;
       height: 40px;
+
+        a {
+          text-decoration: none;
+        }
+        a:visited {
+          color: $message-font-color;
+        }
       }
     }
     .chat-header__group-member {
