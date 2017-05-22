@@ -32,18 +32,25 @@
         }
       }
   }
-
   .groups-list {
       height: calc( 100vh - 15% );
-      padding: 0 20px;
       overflow-y: scroll;
 
+    a {
+      display: block;
+      text-decoration: none;
+      color: $white;
+
+      &:hover{
+        background-color: #495a8c;
+      }
 
       .group-box{
+        box-sizing: border-box;
+        width: 300px;
+        padding: 20px 20px 5px 20px;
 
         &__group-name {
-          padding: 20px 0 5px 0;
-
 
           a {
             text-decoration: none;
@@ -52,12 +59,13 @@
           a:visited{
             color: $white;
           }
-
         }
+
        &__group-message {
          padding-bottom: 40px;
          font-size: 11px;
        }
+    }
   }
   }
 }

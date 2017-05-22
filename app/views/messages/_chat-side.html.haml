@@ -9,8 +9,9 @@
     %i.fa.fa-cog
  .groups-list
   - @groups.each do |group|
-   .group-box
-    .group-box__group-name
-     = link_to group.name, group_path(group.id)
-    .group-box__group-message
-     new_message
+   %a{:href => "/groups/#{group.id}"}
+    .group-box
+     .group-box__group-name
+      = group.name
+     .group-box__group-message
+      new_message
