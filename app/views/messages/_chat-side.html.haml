@@ -9,7 +9,7 @@
     %i.fa.fa-cog
  .groups-list
   - @groups.each do |group|
-   %a{:href => "/groups/#{group.id}"}
+   = link_to group_path(group.id) do
     .group-box
      .group-box__group-name
       = group.name
