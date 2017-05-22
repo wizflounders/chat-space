@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :set_group, only: [:show, :edit, :update]
   def new
    @group = Group.new
   end
@@ -19,15 +20,13 @@ class GroupsController < ApplicationController
 
   def show
     @groups = current_user.groups
-    @group = Group.find(params[:id])
   end
 
   def edit
-    @group = Group.find(params[:id])
+
   end
 
   def update
-     @group = Group.find(params[:id])
      @group.update(update_params)
      if @group.save
        redirect_to({ action: :show }, notice: "グループ情報が更新されました")
@@ -44,6 +43,10 @@ class GroupsController < ApplicationController
 
   def update_params
     params.require(:group).permit(:name, user_ids: [])
+  end
+
+  def set_group
+    @group = Group.find(params[:id])
   end
 
 end
