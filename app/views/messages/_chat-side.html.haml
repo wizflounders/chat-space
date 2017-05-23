@@ -1,0 +1,17 @@
+.chat-side
+ .user
+  .user__user-content
+   .user__user-content__user-name
+    = current_user.name
+   %a.user__user-content--user-new{"href":"/groups/new"}
+    %i.fa.fa-pencil-square-o
+   %a.user__user-content--user-edit{"href":"/users/#{current_user.id}/edit"}
+    %i.fa.fa-cog
+ .groups-list
+  - @groups.each do |group|
+   = link_to group_path(group.id) do
+    .group-box
+     .group-box__group-name
+      = group.name
+     .group-box__group-message
+      new_message

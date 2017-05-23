@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :set_group, only: [:show, :edit, :update]
   def new
    @group = Group.new
   end
@@ -15,11 +16,37 @@ class GroupsController < ApplicationController
     else
       render 'new'
     end
+  end
 
+  def show
+    @groups = current_user.groups
+  end
+
+  def edit
+
+  end
+
+  def update
+     @group.update(update_params)
+     if @group.save
+       redirect_to({ action: :show }, notice: "グループ情報が更新されました")
+
+     else
+       render 'edit'
+     end
   end
 
   private
   def create_group_params
     params.require(:group).permit(:name, user_ids: [])
   end
+
+  def update_params
+    params.require(:group).permit(:name, user_ids: [])
+  end
+
+  def set_group
+    @group = Group.find(params[:id])
+  end
+
 end

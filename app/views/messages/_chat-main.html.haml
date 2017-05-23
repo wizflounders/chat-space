@@ -1,0 +1,53 @@
+-# チャットメイン画面
+.chat-main
+ .chat-header
+  .chat-header__group
+   .chat-header__group__name
+    = @group.name
+   .chat-header__group--edit-btn
+    = link_to "edit", edit_group_path(@group)
+  .chat-header__group-member
+   MEMBER:
+   - @group.users.each do |user|
+    = user.name
+
+
+
+
+ .chat-body
+  .chat-body__message-box
+   .chat-body__message-box__name
+    member1
+   .chat-body__message-box__date
+    2017/7/26 12:00:00
+   .chat-body__message-box__body
+    Hello world!
+
+  .chat-body__message-box
+   .chat-body__message-box__name
+    member2
+   .chat-body__message-box__date
+    2017/7/26 12:01:01
+   .chat-body__message-box__body
+    こんにちは！
+
+  .chat-body__message-box
+   .chat-body__message-box__name
+    member3
+   .chat-body__message-box__date
+    2017/7/26 12:00:00
+   .chat-body__message-box__body
+    Hi there!
+
+  .chat-body__message-box
+   .chat-body__message-box__name
+    member3
+   .chat-body__message-box__date
+    2017/7/26 12:00:00
+   .chat-body__message-box__body
+    Hi there!
+ .chat-footer
+  %form.chat-footer__form
+   Type a message
+   %a.icon.fa.fa-image{"href":"#"}
+  %input.chat-footer--submit{type: "submit", value: "Send"}
