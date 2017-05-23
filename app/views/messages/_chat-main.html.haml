@@ -47,7 +47,9 @@
    .chat-body__message-box__body
     Hi there!
  .chat-footer
-  %form.chat-footer__form
-   Type a message
-   %a.icon.fa.fa-image{"href":"#"}
-  %input.chat-footer--submit{type: "submit", value: "Send"}
+  = form_for @message do |f|
+   .chat-footer__form
+    =f.text_field :body, placeholder: "Type a message"
+    %a.icon.fa.fa-image{"href":"#"}
+   .chat-footer--submit
+    = f.submit "Sent"

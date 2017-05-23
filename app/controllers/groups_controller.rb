@@ -20,6 +20,7 @@ class GroupsController < ApplicationController
 
   def show
     @groups = current_user.groups
+    @message = Message.new
   end
 
   def edit
