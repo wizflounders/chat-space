@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   def create
 
     Message.create(create_params)
-    redirect_to :root
+    redirect_to group_path(id: params[:message][:group_id])
   end
 
   private
