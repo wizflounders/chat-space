@@ -11,41 +11,16 @@
    - @group.users.each do |user|
     = user.name
 
-
-
-
  .chat-body
-  .chat-body__message-box
-   .chat-body__message-box__name
-    member1
-   .chat-body__message-box__date
-    2017/7/26 12:00:00
-   .chat-body__message-box__body
-    Hello world!
+  - @messages.each do |message|
+   .chat-body__message-box
+    .chat-body__message-box__name
+     = message.user.name
+    .chat-body__message-box__date
+     = message.user.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
+    .chat-body__message-box__body
+     = message.body
 
-  .chat-body__message-box
-   .chat-body__message-box__name
-    member2
-   .chat-body__message-box__date
-    2017/7/26 12:01:01
-   .chat-body__message-box__body
-    こんにちは！
-
-  .chat-body__message-box
-   .chat-body__message-box__name
-    member3
-   .chat-body__message-box__date
-    2017/7/26 12:00:00
-   .chat-body__message-box__body
-    Hi there!
-
-  .chat-body__message-box
-   .chat-body__message-box__name
-    member3
-   .chat-body__message-box__date
-    2017/7/26 12:00:00
-   .chat-body__message-box__body
-    Hi there!
  .chat-footer
   = form_for @message do |f|
    .chat-footer__form

@@ -21,6 +21,7 @@ class GroupsController < ApplicationController
   def show
     @groups = current_user.groups
     @message = Message.new
+    @messages = @group.messages.order(created_at: :DESC)
   end
 
   def edit
