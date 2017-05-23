@@ -109,15 +109,21 @@
       }
     }
 
-    .chat-footer--submit input {
+    .chat-footer--submit {
+
       @include float-left;
       height: 50px;
       width: 100px;
       margin-left: 15px;
-      background-color: $blue;
-      border: 0;
-      text-align: center;
-      color: $white;
+
+      input {
+        height: inherit;
+        width: inherit;
+        background-color: $blue;
+        border: 0;
+        text-align: center;
+        color: $white;
+        }
     }
   }
 }
