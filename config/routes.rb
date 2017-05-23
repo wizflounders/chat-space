@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root 'messages#index'
   resources :users, only: [:show, :edit, :update]
   resources :groups, except: [:index, :destroy]
-  resources :messages, only: [:index]
+  resources :messages, only: [:index, :create]
 end

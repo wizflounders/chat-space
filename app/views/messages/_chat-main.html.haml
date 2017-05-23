@@ -52,4 +52,5 @@
     =f.text_field :body, placeholder: "Type a message"
     %a.icon.fa.fa-image{"href":"#"}
    .chat-footer--submit
+    = f.hidden_field :group_id, :value => @group.id
     = f.submit "Sent"
