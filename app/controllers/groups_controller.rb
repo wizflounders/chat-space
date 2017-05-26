@@ -1,5 +1,8 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update]
+  def index
+    @groups = current_user.groups.includes(:messages)
+  end
   def new
    @group = Group.new
   end
@@ -12,16 +15,10 @@ class GroupsController < ApplicationController
     end
     @group.save
     if @group.save
-      redirect_to group_path(@group.id), notice: "グループが作成されました！"
+      redirect_to group_messages_path(@group.id), notice: "グループが作成されました！"
     else
       render 'new'
     end
-  end
-
-  def show
-    @groups = current_user.groups
-    @message = Message.new
-    @messages = @group.messages.includes(:user).order(created_at: :DESC)
   end
 
   def edit
@@ -31,8 +28,7 @@ class GroupsController < ApplicationController
   def update
      @group.update(update_params)
      if @group.save
-       redirect_to({ action: :show }, notice: "グループ情報が更新されました")
-
+       redirect_to group_messages_path(@group.id), notice: "グループ情報が更新されました"
      else
        render 'edit'
      end

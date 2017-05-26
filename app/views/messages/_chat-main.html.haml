@@ -25,11 +25,10 @@
 
 
  .chat-footer
-  = form_for @message do |f|
+  = form_for [@group, @message] do |f|
    .chat-footer__form
     = f.text_field :body, placeholder: "Type a message"
     = f.file_field :image, class:"icon fa fa-image"
 
    .chat-footer--submit
-    = f.hidden_field :group_id, :value => @group.id
     = f.submit "Sent"
