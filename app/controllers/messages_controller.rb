@@ -4,8 +4,12 @@ class MessagesController < ApplicationController
   end
 
   def create
-    current_user.messages.create(create_params)
-    redirect_to group_path(id: params[:message][:group_id])
+    @message = current_user.messages.create(create_params)
+    if @message.save
+      redirect_to group_path(@message.group), notice: "メッセージ送信成功"
+    else
+      redirect_to group_path(@message.group), alert: "メッセージを入力してください"
+    end
   end
 
   private
