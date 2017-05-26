@@ -14,6 +14,6 @@ class MessagesController < ApplicationController
 
   private
   def create_params
-    params.require(:message).permit(:body, :group_id)
+    params.require(:message).permit(:body, :group_id, :image)
   end
 end
