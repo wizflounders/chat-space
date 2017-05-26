@@ -14,4 +14,10 @@
      .group-box__group-name
       = group.name
      .group-box__group-message
-      new_message
+      - if group.messages.present?
+       -if group.messages.last.body.present?
+        = group.messages.last.body
+       - else
+        = "画像を送信しました"
+      - else
+       = "メッセージはまだありません"
