@@ -20,12 +20,16 @@
      = message.user.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
     .chat-body__message-box__body
      = message.body
+     %br
+     = image_tag message.image_url(:thumb).to_s
+
 
  .chat-footer
   = form_for @message do |f|
    .chat-footer__form
-    =f.text_field :body, placeholder: "Type a message"
-    %a.icon.fa.fa-image{"href":"#"}
+    = f.text_field :body, placeholder: "Type a message"
+    = f.file_field :image, class:"icon fa fa-image"
+
    .chat-footer--submit
     = f.hidden_field :group_id, :value => @group.id
     = f.submit "Sent"

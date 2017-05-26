@@ -105,12 +105,14 @@
       .fa.fa-image {
         @include float-right;
         padding: 15px 10px 0 0 ;
+        width: 17.14px;
+        height: 16px;
+        outline: 0;
         color: $message-font-color;
       }
     }
 
     .chat-footer--submit {
-
       @include float-left;
       height: 50px;
       width: 100px;
@@ -123,7 +125,7 @@
         border: 0;
         text-align: center;
         color: $white;
-        }
+      }
     }
   }
 }
