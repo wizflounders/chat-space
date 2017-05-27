@@ -95,26 +95,24 @@
       background-color: $white;
       color: $light-gray;
 
-      input.fa.fa-image {
+      input {
         border: none;
         height: 50px;
         width: calc( 100% - 50px );
         padding-left: 10px;
       }
 
-       label {
+       label.icon.fa.fa-image {
         @include float-right;
         padding: 15px 10px 0 0 ;
-        width: 17.14px;
-        height: 16px;
         outline: 0;
         color: $message-font-color;
+
       }
-       input {
+       input[type='file']{
          display: none;
        }
     }
-
 
     .chat-footer--submit {
       @include float-left;
