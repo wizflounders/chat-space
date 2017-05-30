@@ -87,30 +87,47 @@
     width: 100%;
     padding: 20px 40px;
 
-    form.chat-footer__form {
+    .chat-footer__form {
       @include float-left;
       box-sizing: border-box;
       width: calc( 100% - 130px );
       height: 50px;
-      padding: 15px 0 15px 10px;
       background-color: $white;
       color: $light-gray;
 
-      .fa.fa-image {
-        @include float-right;
-        padding-right: 10px;
-        color: $message-font-color;
+      input {
+        border: none;
+        height: 50px;
+        width: calc( 100% - 50px );
+        padding-left: 10px;
       }
+
+       label.icon.fa.fa-image {
+        @include float-right;
+        padding: 15px 10px 0 0 ;
+        outline: 0;
+        color: $message-font-color;
+
+      }
+       input[type='file']{
+         display: none;
+       }
     }
-    input.chat-footer--submit {
+
+    .chat-footer--submit {
       @include float-left;
       height: 50px;
       width: 100px;
       margin-left: 15px;
-      background-color: $blue;
-      border: 0;
-      text-align: center;
-      color: $white;
+
+      input {
+        height: inherit;
+        width: inherit;
+        background-color: $blue;
+        border: 0;
+        text-align: center;
+        color: $white;
+      }
     }
   }
 }
