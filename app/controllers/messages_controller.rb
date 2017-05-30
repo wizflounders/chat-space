@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = current_user.messages.create(create_params)
+    @message = current_user.messages.new(create_params)
     if @message.save
       redirect_to group_messages_path(@message.group), notice: "メッセージ送信成功"
     else
