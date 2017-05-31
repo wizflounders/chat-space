@@ -18,9 +18,21 @@ describe Message do
     end
 
     it "is invalid without message and image " do
-        message = build(:message,  user_id: user.id, group_id: user.groups.first.id, image: nil)
-        message.body = nil
-        expect(message.errors[:body_or_image]).to include("メッセージもしくは画像を入力してください")
+        message =  create(:message, user_id: user.id, group_id: user.groups.first.id, image: nil, body: nil)
+        message.valid?
+        expect(message.errors.messages[:body_or_image][0]).to include("メッセージもしくは画像を入力してください")
+    end
+
+    it "is invalid without user_id" do
+      message = create(:message, group_id: user.groups.first.id, user_id: nil)
+      message.valid?
+      expect(message.errors.messages[:user]).to include("を入力してください")
+    end
+
+    it "is invalid without group_id" do
+      message = create(:message, group_id: nil, user_id: user.id)
+      message.valid?
+      expect(message.errors.messages[:group]).to include("を入力してください")
     end
   end
 end
