@@ -23,10 +23,11 @@
      %br
      = image_tag message.image_url(:thumb).to_s
 
+
  .chat-footer
-  = form_for [@group, @message] do |f|
+  = form_for [@group, @message],html: {id: 'message-form'} do |f|
    .chat-footer__form
-    = f.text_field :body, placeholder: "Type a message"
+    = f.text_field :body, placeholder: "Type a message", id: "message_body"
     = f.label :image ,:" ", class: "icon fa fa-image"
     = f.file_field :image
    .chat-footer--submit
