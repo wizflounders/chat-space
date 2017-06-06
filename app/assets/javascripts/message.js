@@ -12,23 +12,14 @@ $(function() {
     return html;
   }
 
-  function buildFormData( f ) {
-      var fd = new FormData( f.get( 0 ));
-      var message = $( '#message_body' ).val();
-      var file = $( '#message_image' )[0].files[0];
-      fd.append( 'body', message );
-      fd.append( 'image', file );
-      return fd;
-  }
-
-
   $('#new_message').on('submit', function(e) {
   e.preventDefault();
-   var formData = buildFormData( $( this ));
+
   var textField = $('#message_body');
   var fileField = $('#message_image');
+  var formData = new FormData($(this)[0]);
   var current_url = location.pathname;
-  for(item of formData) console.log(item);
+ for(item of formData) console.log(item);
   $.ajax({
     type: 'POST',
     dataType:'json',
