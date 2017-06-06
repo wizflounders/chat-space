@@ -31,7 +31,6 @@ console.log(data)
     data: formData,
     processData: false,
     contentType: false,
-
   })
 
   .done(function(data) {
@@ -39,7 +38,9 @@ console.log(data)
     $('.chat-body').append(html);
     textField.val('');
     fileField.val('');
+    $('.chat-body').animate({scrollTop: $('.chat-body')[0].scrollHeight}, 'fast');
   })
+
   .fail(function() {
     alert('error');
   });
