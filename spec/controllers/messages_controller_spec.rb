@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 describe MessagesController, type: :controller do
   let(:user) {create(:user)}
 
@@ -33,8 +32,6 @@ describe MessagesController, type: :controller do
         get :index, params: { group_id: user.groups.first.id }
         expect(assigns(:message)).to be_a_new(Message)
       end
-
-#test失敗することがある。。。created_at不一致 →created_at: 1.day.ago.to_s追加
       it "populates an array of @messages" do
         create_list(:message, 2, user_id: user.id, group_id: user.groups.first.id, created_at: 1.day.ago.to_s )
         get :index, params: { group_id: user.groups.first.id }

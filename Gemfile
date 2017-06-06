@@ -66,5 +66,4 @@ gem 'carrierwave'
 gem 'rmagick'
 
 group :test do
-
 end
