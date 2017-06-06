@@ -1,6 +1,5 @@
 $(function() {
   function buildHtml(data) {
-console.log(data)
     if ( data.message.image === null ) { data.message.image = ''; }
     var $html = $( `
                 <div class="chat-body__message-box">
