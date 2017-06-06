@@ -30,6 +30,6 @@ class MessagesController < ApplicationController
 
   def set_message
     @message = @group.messages.new
-    @messages = @group.messages.includes(:user).order(created_at: :DESC)
+    @messages = @group.messages.includes(:user)
   end
 end
