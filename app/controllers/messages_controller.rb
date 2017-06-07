@@ -6,12 +6,16 @@ class MessagesController < ApplicationController
 
   def create
     @message = current_user.messages.new(create_params)
+    respond_to do |format|
     if @message.save
-      redirect_to group_messages_path(@message.group), notice: "メッセージ送信成功"
+      format.html {redirect_to group_messages_path(@message.group), notice: "メッセージ送信成功"}
+      format.json
+
     else
-      flash.now[:alert] = 'メッセージもしくは画像を送信してください'
-      render "index"
+        flash.now[:alert] = 'メッセージもしくは画像を送信してください'
+        render 'index'
     end
+  end
   end
 
   private
@@ -26,6 +30,6 @@ class MessagesController < ApplicationController
 
   def set_message
     @message = @group.messages.new
-    @messages = @group.messages.includes(:user).order(created_at: :DESC)
+    @messages = @group.messages.includes(:user)
   end
 end

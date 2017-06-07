@@ -1,36 +1,48 @@
 $(function() {
-  function buildHTML(message) {
-    var user_name = $('<div class="chat-body__message-box__name">').append(message.name);
-    var message_time = $('<div class="chat-body__message-box__date">').append(message.time);
-    var message_body = $('<div class="chat-body__message-box__body">').append(message.body);
-    var html = $('<div class="chat-body__message-box">').append(user_name, message_time, message_body);
-    return html;
+  function buildHtml(data) {
+    if ( data.message.image === null ) { data.message.image = ''; }
+    var $html = $( `
+                <div class="chat-body__message-box">
+                    <div class="chat-body__message-box__name">${data.message.name}</div>
+                    <div class="chat-body__message-box__date">${data.message.time}</div>
+                <div class="chat-body__message-box__body">${data.message.body}
+                    <div class="chat-body__message-box__image"></br>
+                        <img src="${data.message.image}">
+                    </div>
+                </div>
+            </li>
+        ` );
+    return $html;
   }
 
-  $('message-form').on('submit', function(e) {
-    e.preventDefault();
-    var textField = $('#message_body');
-    var fileField = $('.icon fa fa-image');
-    var form = new FormData($(this)[0]);
-    var current_url = location.pathname;
-    $.ajax({
-      type: 'POST',
-      url: '/index.json',
-     data: form,
-     processData: false,
-     contentType: false,
-     dataType: 'json'
-    })
+  $('#new_message').on('submit', function(e) {
+  e.preventDefault();
 
-    .done(function(data) {
-      var html = buildHtml(data);
-      $('.chat-body').append(html);
-      textField.val('');
-      fileField.val('');
-    })
-    .fail(function() {
-      alert('error');
-    });
-    return false;
+  var textField = $('#message_body');
+  var fileField = $('#message_image');
+  var formData = new FormData($(this)[0]);
+  var current_url = location.pathname;
+
+  $.ajax({
+    type: 'POST',
+    dataType:'json',
+    url: current_url,
+    data: formData,
+    processData: false,
+    contentType: false,
+  })
+
+  .done(function(data) {
+    var html = buildHtml(data);
+    $('.chat-body').append(html);
+    textField.val('');
+    fileField.val('');
+    $('.chat-body').animate({scrollTop: $('.chat-body')[0].scrollHeight}, 'fast');
+  })
+
+  .fail(function() {
+    alert('error');
   });
+  return false;
+});
 });

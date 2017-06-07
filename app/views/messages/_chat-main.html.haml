@@ -17,18 +17,19 @@
     .chat-body__message-box__name
      = message.user.name
     .chat-body__message-box__date
-     = message.user.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
+     = message.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
     .chat-body__message-box__body
      = message.body
      %br
-     = image_tag message.image_url(:thumb).to_s
+     .chat-body__message-box__image
+      = image_tag message.image_url(:thumb).to_s
 
 
  .chat-footer
-  = form_for [@group, @message],html: {id: 'message-form'} do |f|
-   .chat-footer__form
+  = form_for [@group, @message] do |f|
+   .chat-footer__form#new_message
     = f.text_field :body, placeholder: "Type a message", id: "message_body"
     = f.label :image ,:" ", class: "icon fa fa-image"
-    = f.file_field :image
+    = f.file_field :image, id: "message_image"
    .chat-footer--submit
     = f.submit "Sent"
