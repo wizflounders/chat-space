@@ -8,6 +8,14 @@ class UsersController < ApplicationController
     redirect_to :root, notice: "アカウントが更新されました"
   end
 
+  def index
+    @users = User.all
+   respond_to do |format|
+     format.html { redirect_to new_group_path }
+     format.json
+   end
+ end
+
   private
 
   def update_params
