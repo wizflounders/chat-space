@@ -18,7 +18,7 @@ $(function() {
              <li class="chat-group-user">
                  <div class="chat-group-user__name">${name}</div>
                  <div class="chat-group-user__btn chat-group-user__btn--remove">削除</div>
-                 <input value="${id}" type="hidden">
+                 <input name="group[user_ids][]" value="${id}" type="hidden", class="user_id">
              </li>
          ` );
          return $html;
@@ -35,7 +35,7 @@ $(function() {
   $('#added-users').on('click','.chat-group-user__btn--remove', function() {
       $(this).parent().remove();
   } )
-  
+
 //一致人物がいなかった際の表示
   function noOne( result ) {
         var html = $( `
@@ -73,6 +73,7 @@ $(function() {
               user_id = ele.id
 
               if (user_name.match(reg)) {
+
                 appendList(user_name, user_id);
               }
             });
