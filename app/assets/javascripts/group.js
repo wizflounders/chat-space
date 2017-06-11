@@ -12,6 +12,17 @@ $(function() {
         ` );
         $( '#add-users' ).append( html );
   }
+  function AlreadyAdded( user_name, user_id ) {
+        var html = $( `
+            <li class="result-list">
+                <span class="result-list--left added">${user_name}</span>
+                <span class="already_added">追加済み</span>
+                <input value="${user_id}" type="hidden", class="user_id">
+            </li>
+        ` );
+        $( '#add-users' ).append( html );
+  }
+
 // 追加ボタン押下後のチャットメンバー一覧表示先
   function addedMembersHtml( name, id ) {
          var $html = $( `
@@ -23,6 +34,7 @@ $(function() {
          ` );
          return $html;
      }
+     var userIds = []
 // 追加ボタンを押すとチャットメンバー一覧に表示される
   $('#add-users').on('click', '.add-button', function(){
      var name = $(this).parent().text();
@@ -30,11 +42,16 @@ $(function() {
       html = addedMembersHtml(name, user_id);
       $(this).parent().remove();
       $( '#added-users' ).append( html );
-  })
+      userIds.push(user_id)
+  });
 // 削除ボタンを押すとリストから消える
   $('#added-users').on('click','.chat-group-user__btn--remove', function() {
       $(this).parent().remove();
-  } )
+      var remove_id = $(this).next().val();
+      userIds.some(function(v, i){
+    if (v==remove_id) userIds.splice(i,1);
+  });
+});
 
 //一致人物がいなかった際の表示
   function noOne( result ) {
@@ -70,12 +87,15 @@ $(function() {
         if(names.length !== 0) {
             $.each(data, function(i, ele) {
               var user_name = ele.name
-              user_id = ele.id
-
+              user_id = String(ele.id)
               if (user_name.match(reg)) {
-
-                appendList(user_name, user_id);
-              }
+                 var result = userIds.indexOf(user_id) ;
+                if(result == -1){
+                  appendList(user_name, user_id);
+                } else {
+                  AlreadyAdded(user_name, user_id);
+                }
+            }
             });
             if ($(".result-list").length === 0) {
               noOne('一致する人物はいませんでした。');
