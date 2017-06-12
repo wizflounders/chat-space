@@ -53,11 +53,10 @@ $(function() {
         if (message.id > last_msg_id ) {
          var html = autoUpdateHtml(message);
          $('.chat-body').append(html);
-         scrollBottom()
-         console.log('自動更新成功！')
+         scrollBottom();
         }
       });
-    })
+    });
 
     .fail(function(data) {
       alert('自動更新失敗...')
