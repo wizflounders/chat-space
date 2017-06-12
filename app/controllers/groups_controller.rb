@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
     unless @group.user_ids.include?(current_user.id)
       @group.group_users.new(user_id: current_user.id, group_id: @group.id)
     end
+
     @group.save
     if @group.save
       redirect_to group_messages_path(@group.id), notice: "グループが作成されました！"
@@ -27,6 +28,10 @@ class GroupsController < ApplicationController
 
   def update
      @group.update(update_params)
+     #自身が含まれていない時に自身をメンバーに追加
+     unless @group.user_ids.include?(current_user.id)
+       @group.group_users.new(user_id: current_user.id, group_id: @group.id)
+     end
      if @group.save
        redirect_to group_messages_path(@group.id), notice: "グループ情報が更新されました"
      else
