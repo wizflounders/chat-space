@@ -1,7 +1,7 @@
 $(function() {
   var preWord = ""
   var $textField = $('#user-search-field')
-//ユーザ検索候補表示先
+//ユーザ検索候補表示html構築
   function appendList( user_name, user_id ) {
         var html = $( `
             <li class="result-list">
@@ -12,6 +12,7 @@ $(function() {
         ` );
         $( '#add-users' ).append( html );
   }
+//すでにチャットメンバー追加ボタンを押し、表示されているユーザは候補に’追加済み’と表示
   function AlreadyAdded( user_name, user_id ) {
         var html = $( `
             <li class="result-list">
@@ -22,7 +23,6 @@ $(function() {
         ` );
         $( '#add-users' ).append( html );
   }
-
 // 追加ボタン押下後のチャットメンバー一覧表示先
   function addedMembersHtml( name, id ) {
          var $html = $( `
@@ -34,6 +34,7 @@ $(function() {
          ` );
          return $html;
      }
+//追加されたユーザを判定するための配列を作成
      var userIds = []
 // 追加ボタンを押すとチャットメンバー一覧に表示される
   $('#add-users').on('click', '.add-button', function(){
@@ -48,11 +49,11 @@ $(function() {
   $('#added-users').on('click','.chat-group-user__btn--remove', function() {
       $(this).parent().remove();
       var remove_id = $(this).next().val();
+// 削除ボタンを押すと、userIdsからそのユーザのidを削除
       userIds.some(function(v, i){
     if (v==remove_id) userIds.splice(i,1);
   });
 });
-
 //一致人物がいなかった際の表示
   function noOne( result ) {
         var html = $( `
@@ -62,7 +63,6 @@ $(function() {
         ` );
         $( '#add-users' ).append( html );
   }
-
   function editElement(element) {
     var result = "^" + element;
     return result;
@@ -74,7 +74,6 @@ $(function() {
       url: '/users',
       dataType: 'json'
     })
-
 // User.allのユーザー名と入力を比較してインクリメンタルサーチを実行
   .done(function(data) {
       names = $textField.val();
