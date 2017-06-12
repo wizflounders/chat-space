@@ -56,7 +56,7 @@ $(function() {
          scrollBottom();
         }
       });
-    });
+    })
 
     .fail(function(data) {
       alert('自動更新失敗...')
