@@ -13,7 +13,7 @@
 
  .chat-body
   - @messages.each do |message|
-   .chat-body__message-box
+   .chat-body__message-box{"data-message-id": "#{message.id}"}
     .chat-body__message-box__name
      = message.user.name
     .chat-body__message-box__date
