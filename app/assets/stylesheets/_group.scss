@@ -90,11 +90,11 @@
     }
 
     .chat-group-user__name {
-      float: left;
+      @include float-left;
     }
 
     .chat-group-user__btn {
-      float: right;
+      @include float-right;
       display: inline-block;
       cursor: pointer;
 
@@ -126,6 +126,14 @@
         line-height: 50px;
         border: none;
         background-color: $white;
+      }
+
+      &--left.added{
+        color: $light-gray
+      }
+      .already_added {
+        float: right;
+        color: $light-gray
       }
     }
   .chat-group-form__action-btn {
